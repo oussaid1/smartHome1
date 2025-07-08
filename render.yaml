@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: backend
+    env: python
+    region: oregon
+    plan: free
+    build:
+      - command: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: "/docs"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.5
+  - type: web
+    name: frontend
+    plan: free
+    region: oregon
+    staticPublishPath: ./frontend
