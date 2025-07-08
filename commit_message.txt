@@ -1,1 +1,1 @@
-Fix render.yaml static_site type and rootDir
+Configure project for Replit deployment

@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FastAPI Frontend</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard</title>
     <style>
-        canvas {
-            border: 1px solid black;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .data-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #007bff;
         }
     </style>
 </head>
 <body>
-    <h1>Items from FastAPI Backend</h1>
-    <canvas id="myCanvas" width="800" height="600"></canvas>
-
-    <script>
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-
-        fetch('http://127.0.0.1:8000/items/')
-            .then(response => response.json())
-            .then(data => {
-                let y = 50;
-                data.items.forEach(item => {
-                    ctx.font = '20px Arial';
-                    ctx.fillText(`ID: ${item[0]}, Name: ${item[1]}, Description: ${item[2]}`, 50, y);
-                    y += 30;
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                ctx.font = '20px Arial';
-                ctx.fillText('Error fetching data from the API.', 50, 50);
-            });
-    </script>
+    <div class="container">
+        <h1>Smart Home Data</h1>
+        <p>Temperature: <span id="temperature" class="data-value">Loading...</span> &deg;C</p>
+        <p>Humidity: <span id="humidity" class="data-value">Loading...</span> %</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
