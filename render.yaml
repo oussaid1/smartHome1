@@ -13,6 +13,7 @@ services:
         value: 3.11.5
   - type: static_site
     name: frontend
-    plan: free
-    region: oregon
-    staticPublishPath: ./frontend
+    rootDir: frontend
+    staticPublishPath: .
+    # If your frontend has a build step (e.g., React, Vue, Angular), uncomment and adjust buildCommand
+    # buildCommand: npm run build
